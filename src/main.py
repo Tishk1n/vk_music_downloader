@@ -1,4 +1,4 @@
-from config import TOKEN
+from config import TOKEN, ADMIN
 from aiogram import Bot, Dispatcher, types
 from aiogram.filters import CommandStart
 import logging
@@ -53,6 +53,13 @@ async def fsm_end(message: types.Message, state:FSMContext):
     await message.answer(f"Ваше имя: {data['name']}\nВаш возраст {data['age']}\nВаш номер телефона: {data['number']}")
     print(f"Ваше имя: {data['name']}\nВаш возраст {data['age']}\nВаш номер телефона: {data['number']}")
     await state.clear()
+
+@dp.callback_query(F.data == "admin-panel")
+async def admin_panel(call: CallbackQuery):
+    if call.from_user.id == ADMIN:
+        await call.message.answer("Ты админ")
+    else:
+        await call.message.answer("Ты не админ")
 
 
 async def main() -> None:

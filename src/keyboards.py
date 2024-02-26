@@ -13,7 +13,8 @@ buttons_list = [
     InlineKeyboardButton(text="Настройки", callback_data="settings")
     ],
     [
-    InlineKeyboardButton(text="Регистрация", callback_data="registration")
+    InlineKeyboardButton(text="Регистрация", callback_data="registration"),
+    InlineKeyboardButton(text="Админ-панель", callback_data="admin-panel")
     ]
 ]
 menu_kb = InlineKeyboardMarkup(inline_keyboard=buttons_list)
